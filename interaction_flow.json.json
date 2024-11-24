@@ -1,0 +1,57 @@
+{
+  "interaction": {
+    "start": {
+      "type": "text",
+      "next": true,
+      "pre-delay": 0,
+      "text-a": "Welcome to our study. You will receive a virtual stipend of $2.50, with $1.50 available for donation to a charity. Would you like to continue?",
+      "next-nodes": [
+        {"node": "consent", "intent": ["yes"]},
+        {"node": "end", "intent": ["no"]}
+      ]
+    },
+    "consent": {
+      "type": "text",
+      "next": true,
+      "pre-delay": 0,
+      "text-a": "Thank you for participating. We'll present a charity and ask for a donation.",
+      "next-nodes": [
+        {"node": "charity_1", "intent": ["blank"]}
+      ]
+    },
+    "charity_1": {
+      "type": "text",
+      "next": true,
+      "pre-delay": 0,
+      "text-a": "[Charity description with scarcity appeal]",
+      "next-nodes": [
+        {"node": "donate", "intent": ["donate"], "condition": ["a"]},
+        {"node": "decline", "intent": ["decline"], "condition": ["a"]}
+      ]
+    },
+    "donate": {
+      "type": "text",
+      "next": true,
+      "pre-delay": 0,
+      "text-a": "Thank you for your donation!",
+      "next-nodes": [
+        {"node": "end", "intent": ["blank"]}
+      ]
+    },
+    "decline": {
+      "type": "text",
+      "next": false,
+      "pre-delay": 0,
+      "text-a": "Thank you for your time. We appreciate your participation.",
+      "next-nodes": [
+        {"node": "end", "intent": ["blank"]}
+      ]
+    },
+    "end": {
+      "type": "text",
+      "next": false,
+      "pre-delay": 0,
+      "text-a": "Thank you for your time!"
+    }
+  }
+}
